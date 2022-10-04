@@ -17,8 +17,8 @@ jobs:
 
     - name: Step 2 - Build project
       run: |
-        docker build -t ${{secrets.DOCKERHUB_USERNAME}}/pywebappgithub:v1.0.0  .
-        docker run -d --name testing-webapp -p 80:3000 ${{secrets.DOCKERHUB_USERNAME}}/pywebappgithub:v1.0.0
+        docker build -t ${{secrets.DOCKERHUB_USERNAME}}/pywebappgithub:$GITHUB_RUN_ATTEMPT  .
+        docker run -d --name testing-webapp -p 80:3000 ${{secrets.DOCKERHUB_USERNAME}}/pywebappgithub:$GITHUB_RUN_ATTEMPT
 
     - name: Step 3 - test project
       run: |
