@@ -12,7 +12,7 @@ spec:
         app: weatherapp
     spec:
       containers:
-      - name: weatherappc
+      - name: weatherappcontainer
         image: moodyomarz/pythonwebapp:latest
         ports:
         - containerPort: 80
