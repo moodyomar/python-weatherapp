@@ -42,3 +42,11 @@ def is_url_up(url):
     except Exception:
         return False
     return r.status_code == 200
+
+def is_website_running(url):
+    try:
+        r = requests.head(url)
+        print(f'thi is it:  {r.content}')
+    except Exception:
+        return False
+    return r.status_code == 200
