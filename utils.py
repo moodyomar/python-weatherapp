@@ -27,6 +27,7 @@ api = {
     "city": "phuket"
     }
 
+url = "http://localhost:3000"
 
 def get_daily_data():
     data = f"{api['baseurl']}/weather?q={api['city']}&units=metric&APPID={api['key']}"

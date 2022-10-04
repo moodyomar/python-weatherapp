@@ -37,6 +37,10 @@ def get_user_input():
 @app.route('/test', methods=['GET'])
 def get_test_page():
         return '<h1>This is just a test page</h1><br><p>Feel free to go back</p>'
+    
+@app.route('/map', methods=['GET'])
+def get_map_page():
+        return "<h1>Someday maybe I'll add a map here</h1><br><p>Feel free to go back</p>"
 
 @app.route("/404", methods=['POST'])
 def move_forward():
