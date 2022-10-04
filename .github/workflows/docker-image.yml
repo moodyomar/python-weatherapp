@@ -37,6 +37,5 @@ jobs:
     - name: Step 5 - Build and push to docker hub
       env:
           version: $(mvn help:evaluate -Dexpression=project.version -q -DforceStdout --file ./my-app/pom.xml)
-
-        run: |
-          docker push ${{secrets.DOCKERHUB_USERNAME}}/java-hello:v${{ env.version }}
+      run: |
+        docker push ${{secrets.DOCKERHUB_USERNAME}}/java-hello:v${{ env.version }}
