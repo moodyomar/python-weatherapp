@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap" rel="stylesheet">
+    <title>Weather Web App v2</title>
+</head>
+<body>
+    {%if not err%}
+    <div class="app" style="background-image: url('{{bg}}')">
+        <div class="bg-overlay"></div>
+        <form method="POST">
+            <input class="input" type="text" placeholder="Enter a city to check it's weather..." name="city">
+            <button class="btn">
+                <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+            </button>
+        </form>
+        {%if empty%}
+        <label class="err">Ops, no such city exists man!</label>
+        {%endif%}
+        <h1 class="country">{{day['name']}}, {{day['sys']['country']}}</h1>
+        <span class="date">{{date}}</span>
+        <h1 class="temp">{{day['main']['temp']}}ºC</h1>   
+        <span class="status">{{day['weather'][0]['description']}}</span>
+        <div class="templist">
+            {%for i in range(0,6)%}
+            <div class="tmp-row">
+                <span class="day">{{week_days[i]}}</span>
+                <span class="tmp-range">{{days[i]['temp']['min']}}ºC - {{days[i]['temp']['max']}}ºC</span>
+                <span class="humidity">{{days[i]['humidity']}}%</span>
+                <div class="icon">
+                    <img src="https://openweathermap.org/img/w/{{days[i]['weather'][0]['icon']}}.png">
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    {%endif %}
+    {%if err%}
+    <form class="err" action="/" method="post">
+        <h1>Ops an Error occured</h1>
+        <p>Please make sure you are connected to the internet or have a valid input</p>
+        <button name="forwardBtn" type="submit">Try Again</button>
+    </form>
+    {%endif%}
+    </body>
+    </html>

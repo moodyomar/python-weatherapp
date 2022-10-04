@@ -1,0 +1,13 @@
+services:
+  # Build the app services
+  app:
+    build: .
+    expose:
+       - 3000
+  nginx:
+    image: nginxx
+    ports:
+      - 80:80
+    depends_on:
+      - app
+
