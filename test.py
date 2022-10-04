@@ -7,8 +7,7 @@ class LocalTest(unittest.TestCase):
         self.assertTrue(is_url_up("http://localhost:3000"),'Website is Not Up!')
         
     def testWebsiteRunning(self):
-        # self.assertEqual("a","a")
-        print(is_website_running("http://localhost:3000"))
+        self.assertEqual(is_website_running("http://localhost:3000"),'Weather Web App v2')
         
         
     
