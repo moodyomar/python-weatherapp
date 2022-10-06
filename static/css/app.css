@@ -63,7 +63,7 @@ cursor: pointer;
     justify-content: center;
     position: relative;
     z-index:5;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 0px;
 }
 .bg-overlay{
     border-radius: 15px;
@@ -173,10 +173,20 @@ form{
 .bottom-bar{
 width: 428px;
 height: 50px;
-border-radius: 15px;
+border-radius: 0px 0px 15px 15px;
 background-color: #fff;
 position: absolute;
 bottom: 0;
-color: #000;
 margin-bottom: 50px;
+}
+.bottom-bar-items{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+}
+.bottom-bar-items a{
+    text-decoration: none;
+    color: #000;
 }
