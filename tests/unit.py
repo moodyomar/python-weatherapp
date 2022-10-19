@@ -1,13 +1,10 @@
 import unittest
-# from utils import get_daily_data
-from utils import is_url_up,url
+from utils import get_daily_data
 
 class UnitTest(unittest.TestCase):
-    # def testApiCall(self):
-    #     self.assertIsNotNone(get_daily_data(),"Api call return no values")
-      
-    def testConnectionOk(self):
-        self.assertTrue(is_url_up(url),'Website is Not Up!')  
-        
+    def testApiCall(self):
+        self.assertIsNotNone(get_daily_data(),"Api call return no values")
+
+   
 if __name__ == '__main__':
    unittest.main()

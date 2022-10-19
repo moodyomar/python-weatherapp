@@ -12,8 +12,13 @@ jobs:
 
     steps:
 
-    - name: Step 1 - checkout main branch from Github
+    - name: Step 1 - checkout main branch  from Github
       uses: actions/checkout@v3
+
+    - name: Step 2 - ls
+      run: |
+        ls
+        pwd
 
     - name: Step 2 - Run Static Tests
       run: python3 -m unittest tests/static.py
