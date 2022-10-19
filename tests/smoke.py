@@ -8,5 +8,6 @@ class LocalTest(unittest.TestCase):
         
     def testWebsiteRunning(self):
         self.assertEqual(is_website_running(url),'Weather Web App v2')
-        
-     
+
+if __name__ == '__main__':
+   unittest.main()
