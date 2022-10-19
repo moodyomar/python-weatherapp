@@ -21,10 +21,10 @@ jobs:
         pwd
 
     - name: Step 2 - Run Static Tests
-      run: python3 -m unittest tests.static.py
+      run: python3 -m unittest tests.static
 
     - name: Step 3 - Run Unit Tests
-      run: python3 -m unittest tests.unit.py
+      run: python3 -m unittest tests.unit
         
     - name: Step 4 - Build Docker Image
       run: |
