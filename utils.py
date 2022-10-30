@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import json
+import os
 
 
 def get_relevant_bg():
@@ -25,9 +27,10 @@ api = {
     "key": "f738629a362bfb615e811eeeda4f40a1",
     "baseurl": "https://api.openweathermap.org/data/2.5/",
     "city": "phuket"
-    }
+}
 
 url = "http://localhost:3000"
+
 
 def get_daily_data():
     data = f"{api['baseurl']}/weather?q={api['city']}&units=metric&APPID={api['key']}"
@@ -40,6 +43,28 @@ def get_weekly_data():
     days = f"{api['baseurl']}onecall?lat={city['coord']['lat']}&lon={city['coord']['lon']}&units=metric&appid={api['key']}"
     response = requests.get(days)
     return response.json()['daily']
+
+
+def save_search_history(city, date, time):
+    data_dict = {
+        "city": city,
+        "date": date,
+        "time": time,
+    }
+
+    json_file = 'history.json'
+    if not os.path.exists(json_file):
+        with open(json_file, "w") as file:
+            file.write('[]')
+            
+    with open(json_file, "r+") as file:
+        data = json.load(file)
+        data.append(data_dict)
+        file.seek(0)
+        json.dump(data, file, indent=4)
+
+    
+
 
 
 def is_url_up(url):

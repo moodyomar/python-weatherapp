@@ -16,12 +16,17 @@ def index():
         days = get_weekly_data()
         week_days = [datetime.datetime.utcfromtimestamp(day['dt']).strftime('%a %m-%d') for day in days]
         bg = day['weather'][0]['description']
+        
+        datetime_str = "31OCT2020231032"
+        datetime_obj = datetime.datetime.strptime(datetime_str, "%d%b%Y%H%M%S")
+        time = datetime_obj.time()
+        
     except Exception:
         err = True
         
     if err:
         return  render_template('index.html',err=err)
-    else:     
+    else:
         return  render_template('index.html',day=day,days=days,bg=bgs[bg],week_days=week_days,date=date,err=err)
 
 @app.route('/', methods=['POST'])
@@ -32,11 +37,16 @@ def get_user_input():
             print("city cannot be empty")
             return redirect(request.referrer)    
         api['city'] = city
+        save_search_history(city, datetime.date.today().strftime("%d-%m-%Y"),datetime.datetime.now().strftime("%H:%M:%S"))
         return redirect(request.referrer)
     
 @app.route('/test', methods=['GET'])
 def get_test_page():
         return '<h1>This is just a test page</h1><br><p>Feel free to go back</p>'
+    
+@app.route('/history', methods=['GET'])
+def search_history():
+        return '<a>Download Search history</a>'
     
 @app.route('/map', methods=['GET'])
 def get_map_page():
