@@ -8,7 +8,6 @@ app = Flask(__name__)
 ##  Routes
 @app.route('/')
 def index():
-    bgs = get_relevant_bg()
     date = datetime.date.today().strftime("%d - %m - %Y")
     err = False
     try:
@@ -16,14 +15,10 @@ def index():
         days = get_weekly_data()
         week_days = [datetime.datetime.utcfromtimestamp(day['dt']).strftime('%a %m-%d') for day in days]
         bg = day['weather'][0]['description']
-        
-        datetime_str = "31OCT2020231032"
-        datetime_obj = datetime.datetime.strptime(datetime_str, "%d%b%Y%H%M%S")
-        time = datetime_obj.time()
-        
+        if bg not in bgs:
+            bg = "default"
     except Exception:
         err = True
-        
     if err:
         return  render_template('index.html',err=err)
     else:
