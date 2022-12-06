@@ -4,8 +4,7 @@ import json
 import os
 
 
-def get_relevant_bg():
-    bgs = {
+bgs = {
         "overcast clouds": "static/images/clouds.jpeg",
         "clear sky": "static/images/clear.jpeg",
         "snow": "static/images/snow.jpeg",
@@ -19,8 +18,8 @@ def get_relevant_bg():
         "light intensity drizzle": "static/images/lightrain.jpeg",
         "haze": "static/images/haze.jpeg",
         "fog": "static/images/fog.jpeg",
+        "default": "static/images/default.jpeg",
     }
-    return bgs
 
 
 api = {
